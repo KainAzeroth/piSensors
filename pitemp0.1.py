@@ -16,11 +16,11 @@ count = 0
 while True:
     if count < maxPoints:
         tempFile = open("temp.txt", "a")
-        count = 0
+        count = count + 1
     if count > maxPoints:
         tempFile = open("temp.txt", "w")
-        count = count + 1
-    
+        count = 0
+
     tempC = mcp.temperature
     tempF = tempC * 9 / 5 + 32
     currentDT = time.strftime('%X %x %Z')
