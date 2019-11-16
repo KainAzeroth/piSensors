@@ -24,7 +24,7 @@ while True:
     tempC = mcp.temperature
     tempF = tempC * 9 / 5 + 32
     currentDT = time.strftime('%X %x %Z')
-    reportedTemp = ('{}\tTemp: {} C | {} F '.format(currentDT, tempC, tempF))
+    reportedTemp = ('{}\tTemp: {} C | {} F | {} Count'.format(currentDT, tempC, tempF, count))
     print(reportedTemp)
     print(reportedTemp, file=tempFile)
     time.sleep(2)
