@@ -14,18 +14,22 @@ maxPoints = 1000
 count = 0
 
 while True:
-    if count < maxPoints:
-        tempFile = open("temp.txt", "a")
-        count = count + 1
-    if count > maxPoints:
-        tempFile = open("temp.txt", "w")
-        count = 0
-
     tempC = mcp.temperature
     tempF = tempC * 9 / 5 + 32
     currentDT = time.strftime('%X %x %Z')
     reportedTemp = ('{}\tTemp: {} C | {} F | {} Count'.format(currentDT, tempC, tempF, count))
     print(reportedTemp)
-    print(reportedTemp, file=tempFile)
-    time.sleep(2)
-    tempFile.close()
+    
+    if count < maxPoints:
+        tempFile = open("temp.txt", "a")
+        print(reportedTemp, file=tempFile)
+        count = count + 1
+        time.sleep(2)
+        tempFile.close()
+
+    if count > maxPoints:
+        tempFile = open("temp.txt", "w")
+        print(reportedTemp, file=tempFile)
+        count = 0
+        time.sleep(2)
+        tempFile.close()
