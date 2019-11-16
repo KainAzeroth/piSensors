@@ -19,7 +19,7 @@ while True:
     currentDT = time.strftime('%X %x %Z')
     reportedTemp = ('{}\tTemp: {} C | {} F | {} Count'.format(currentDT, tempC, tempF, count))
     print(reportedTemp)
-    
+
     if count < maxPoints:
         tempFile = open("temp.txt", "a")
         print(reportedTemp, file=tempFile)
