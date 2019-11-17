@@ -10,7 +10,7 @@ import datetime
 # This example shows how to get the temperature from a MCP9808 board
 i2c_bus = busio.I2C(board.SCL, board.SDA)
 mcp = adafruit_mcp9808.MCP9808(i2c_bus)
-maxPoints = 1000
+maxPoints = 5000
 count = 0
 
 while True:
@@ -27,7 +27,7 @@ while True:
         time.sleep(2)
         tempFile.close()
 
-    if count > maxPoints:
+    if count >= maxPoints:
         tempFile = open("temp.txt", "w")
         print(reportedTemp, file=tempFile)
         count = 0
