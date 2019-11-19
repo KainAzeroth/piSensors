@@ -22,13 +22,13 @@ while True:
 
     if tempF < 50:
         reportedTemp = reportedTemp + " COLD WARNING! HOT WARNING!"
-    elif tempf < 60:
+    elif tempF < 60:
         reportedTemp = reportedTemp + " Cool"
-    elif tempf < 70:
+    elif tempF < 70:
         reportedTemp = reportedTemp + " Moderate"
-    elif tempf < 80:
+    elif tempF < 80:
         reportedTemp = reportedTemp + " Warm"
-    elif tempf < 90:
+    elif tempF < 90:
         reportedTemp = reportedTemp + " HOT WARNING! HOT WARNING!"
 
     print(reportedTemp)
