@@ -17,7 +17,7 @@ while True:
     tempC = mcp.temperature
     tempF = tempC * 9 / 5 + 32
     currentDT = time.strftime('%X %x %Z')
-    reportedTemp = ('{}\tTemp: {} C | {} F | {} Count'.format(currentDT, tempC, tempF, count))
+    reportedTemp = ('{currentDT}\tTemp: {tempC} C | {tempF} F | {count} Count')
     print(reportedTemp)
 
     if count < maxPoints:
