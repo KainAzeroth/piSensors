@@ -21,15 +21,15 @@ while True:
     reportedTemp = f"{currentDT}\tTemp: {tempC} C | {tempF} F | {count} Count"
 
     if tempF < 50:
-        reportedTemp = reportedTemp + " COLD WARNING! HOT WARNING!"
+        reportedTemp = reportedTemp + " | COLD WARNING! HOT WARNING!"
     elif tempF < 60:
-        reportedTemp = reportedTemp + " Cool"
+        reportedTemp = reportedTemp + " | Cool"
     elif tempF < 70:
-        reportedTemp = reportedTemp + " Moderate"
+        reportedTemp = reportedTemp + " | Moderate"
     elif tempF < 80:
-        reportedTemp = reportedTemp + " Warm"
+        reportedTemp = reportedTemp + " | Warm"
     elif tempF < 90:
-        reportedTemp = reportedTemp + " HOT WARNING! HOT WARNING!"
+        reportedTemp = reportedTemp + " | HOT WARNING! HOT WARNING!"
 
     print(reportedTemp)
 
