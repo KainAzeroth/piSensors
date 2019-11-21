@@ -17,7 +17,10 @@ count = 0
 
 while True:
     #checking to make sure the sleepTimer isn't set to something stupid
-    if
+    if sleepTimer < 1: #if less than 1 set to 1. Minimum is 1 second.
+        sleepTimer = 1
+    elif sleepTimer > 3600: #if more than 3600 set to 3600. This is 1 hour in seconds. More than that seems silly. 
+        sleepTimer = 3600
 
     tempC = mcp.temperature
     tempF = tempC * 9 / 5 + 32
