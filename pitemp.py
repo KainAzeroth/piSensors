@@ -25,7 +25,7 @@ while True:
     tempC = mcp.temperature
     tempF = tempC * 9 / 5 + 32
     currentDT = time.strftime('%X %x %Z')
-    reportedTemp = f"{currentDT}\tTemp: {tempC} C | {tempF} F | {count} Count"
+    reportedTemp = f"{currentDT} | {tempC} C | {tempF} F"
 
     if tempF < 50:
         reportedTemp = reportedTemp + " | COLD WARNING! HOT WARNING!"
