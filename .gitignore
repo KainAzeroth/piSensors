@@ -105,4 +105,5 @@ venv.bak/
 
 # USER
 temp.txt
-.pitemp.py.swp
+.pisensors.py.swp
+
