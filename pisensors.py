@@ -1,5 +1,5 @@
-# Raspberry Pi temperature sensor usind adafruit breakout board for MCP9808.
-# Code based on files from Adafruit.
+# Raspberry Pi temperature and Humidity sensor using adafruit breakout boards MCP9808 and SHT31-D.
+# Code based on files from Adafruit mostly and cobbled together by me
 
 import time
 import board
