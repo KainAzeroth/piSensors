@@ -13,7 +13,7 @@ mcp = adafruit_mcp9808.MCP9808(i2c_bus, 0x1b)
 sht = adafruit_sht31d.SHT31D(i2c_bus, 0x44)
 
 maxPoints = 5000 #Max data points to keep in the file. Really badly done. Restarts the file at this number instead of removing a line and adding a new one
-sleepTimer = 2 #This is the number of seconds between checking the sensor. Kinda like a polling rate in seconds. Values between 1 and 3600 seconds
+sleepTimer = 5 #This is the number of seconds between checking the sensor. Kinda like a polling rate in seconds. Values between 1 and 3600 seconds
 count = 0
 loopcount  = 0
 
@@ -28,17 +28,19 @@ while True:
 
     mcpTempC = mcp.temperature
     mcpTempF = mcpTempC * 1.8 + 32
-    mcpTempCR = round(mcpTempC,3)
-    mcpTempFR = round(mcpTempF,3)
+    mcpTempCR = format(round(mcpTempC,3), '.3f')
+    mcpTempFR = format(round(mcpTempF,3), '.3f')
 
     shtTempC = sht.temperature
     shtTempF = shtTempC * 1.8 + 32
     shtTempCR = round(shtTempC,3)
     shtTempFR = round(shtTempF,3)
-    shtHumidity = round(sht.relative_humidity,3)
+    shtHumidity = format(round(sht.relative_humidity,3), '.3f')
 
+    reportedTemp = f"{currentDT} | {mcpTempCR} C | {mcpTempFR} F | {shtHumidity}%"
 
-    reportedTemp = f"{currentDT} | {mcpTempCR} mC | {mcpTempFR} mF | {shtTempCR} sC | {shtTempFR} sF | {shtHumidity} % RH"
+#    OLD FORMAT
+#    reportedTemp = f"{currentDT} | {mcpTempCR} mC | {mcpTempFR} mF | {shtTempCR} sC | {shtTempFR} sF | {shtHumidity} % RH"
 
 #    if tempF < 50:
 #        reportedTemp = reportedTemp + " | COLD WARNING! HOT WARNING!"
@@ -69,10 +71,12 @@ while True:
 
     loopcount += 1
 
+#   This is turning on the heater on the SHT31-D because it was in some tutorials
+#   it happens every 10 sensor checks. There are two lines to print the action, just uncomment them.
     if loopcount == 10:
         loopcount = 0
         sht.heater = True
-        print("SHT31-D Heater status =", sht.heater)
+#        print("SHT31-D Heater status =", sht.heater) 
         time.sleep(1)
         sht.heater = False
-        print("SHT31-D Heater status =", sht.heater)
+#        print("SHT31-D Heater status =", sht.heater)
