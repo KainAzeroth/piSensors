@@ -19,11 +19,11 @@ sht = adafruit_sht31d.SHT31D(i2c_bus, 0x44)
 # Settings
 maxPoints = 5000 #Max data points to keep in the file. Really badly done. Restarts the file at this number instead of removing a line and adding a new one
 sleepTimer = 1 #This is the number of seconds between checking the sensor. Kinda like a polling rate in seconds. Values between 1 and 3600 seconds
-lowTemp = 75 #Warning when temp is below this
+lowTemp = 74 #Warning when temp is below this
 highTemp = 80 #Warning when temp is above this
 
 # Loop counts
-countA = 0
+count = 0
 loopcount  = 0
 
 while True:
@@ -54,21 +54,19 @@ while True:
     if mcpTempF > highTemp:
         print(Fore.RED + reportedTemp + Style.RESET_ALL)
     elif mcpTempF < lowTemp:
-        print(Fore.CYAN + reportedTemp +Style.RESET_ALL)
-    else:
-        print(reportedTemp)
+        print(Fore.BLUE + reportedTemp +Style.RESET_ALL)
 
-    if countA < maxPoints:
+    if count < maxPoints:
         tempFile = open("temp.txt", "a")
         print(reportedTemp, file=tempFile)
-        countA = countA + 1
-        time.sleep(sleepTimer)
+        count = count + 1
+
         tempFile.close()
 
-    if countA >= maxPoints:
+    if count >= maxPoints:
         tempFile = open("temp.txt", "w")
         print(reportedTemp, file=tempFile)
-        countA = 0
+        count = 0
         time.sleep(sleepTimer)
         tempFile.close()
 
