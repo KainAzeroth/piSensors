@@ -8,3 +8,7 @@ I thought it would be nice to get some other readings like ambient temperature, 
 So far... just a janky python program asking for temperature/humidity and displaying it in terminal and a file. Kind of boring?
 
 Oh yeah, and I don't actually know Python. Learning as we go! 
+
+Todo
+- add graphing of data
+
