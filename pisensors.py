@@ -49,31 +49,31 @@ while True:
     shtTempFR = round(shtTempF,3)
     shtHumidity = format(round(sht.relative_humidity,3), '.3f')
 
-#    reportedTemp = f"{currentDT} | {mcpTempCR} C | {mcpTempFR} F | {shtHumidity}%"
+    reportedTemp = f"{currentDT} | {mcpTempCR} C | {mcpTempFR} F | {shtHumidity}%"
 
 #    OLD FORMAT
 #    reportedTemp = f"{currentDT} | {mcpTempCR} mC | {mcpTempFR} mF | {shtTempCR} sC | {shtTempFR} sF | {shtHumidity} % RH"
 
-#    if mcpTempF > highTemp:
-#        print(Fore.RED + reportedTemp + Style.RESET_ALL)
-#    elif mcpTempF < lowTemp:
-#        print(Fore.CYAN + reportedTemp +Style.RESET_ALL)
-#   else:
-#        print(reportedTemp)
+    if mcpTempF > highTemp:
+        print(Fore.RED + reportedTemp + Style.RESET_ALL, end='\r')
+    elif mcpTempF < lowTemp:
+        print(Fore.CYAN + reportedTemp +Style.RESET_ALL, end='\r')
+    else:
+        print(reportedTemp, end='\r')
 
-#    if countA < maxPoints:
-#        tempFile = open("temp.txt", "a")
-#        print(reportedTemp, file=tempFile)
-#        countA = countA + 1
-#        time.sleep(sleepTimer)
-#        tempFile.close()
+    if countA < maxPoints:
+        tempFile = open("temp.txt", "a")
+        print(reportedTemp, file=tempFile)
+        countA = countA + 1
+        time.sleep(sleepTimer)
+        tempFile.close()
 
-#    if countA >= maxPoints:
-#        tempFile = open("temp.txt", "w")
-#        print(reportedTemp, file=tempFile)
-#        countA = 0
-#        time.sleep(sleepTimer)
-#        tempFile.close()
+    if countA >= maxPoints:
+        tempFile = open("temp.txt", "w")
+        print(reportedTemp, file=tempFile)
+        countA = 0
+        time.sleep(sleepTimer)
+        tempFile.close()
 
     loopcount += 1
 
@@ -90,18 +90,10 @@ while True:
 # Plotext plotting
 
 
-    plt.title("Temperature")
-    plt.clc()
-    frames = 50
-    x = range(1, 200+1)
-
-    for i in range(frames):
-        y = mcp.temperature * 1.8 + 32
-
-        plt.cld()
-        plt.clt()
-        plt.plot(x, y, marker = "dot")
-
-#        plt.sleep(0.001)
-        plt.show()
+#    plt.title("Temperature")
+#    plt.clc()
+    y = mcpTempF
+    x = maxPoints
+    plt.scatter(y)
+    plt.show()
 
